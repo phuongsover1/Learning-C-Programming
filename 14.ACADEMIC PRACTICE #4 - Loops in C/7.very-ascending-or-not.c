@@ -41,8 +41,10 @@ int main() {
         count--;
         printf("Size must be a positive number!!\n");
       } else {
-        if (currentValue < lastValue) 
+        if (currentValue < lastValue)  {
           isAscending = 0;
+          break;
+        }
       }
     }
   } while(count + 1 <= size);
