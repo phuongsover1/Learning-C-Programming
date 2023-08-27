@@ -12,6 +12,8 @@ float findAverageAndPrintTotalNumberLessThanGivenDigit(int number, int digit) {
   int temp = number;
   if (number == 0)
     return 0;
+  if (number < 0)
+    number *= -1;
   while (number != 0) {
     if (number % 10 < digit) {
       sum = sum + (number % 10);
