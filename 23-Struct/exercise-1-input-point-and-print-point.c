@@ -6,7 +6,7 @@
  *   - Function #2 - responsible for getting a point input from the user
  *                   and then return it
  */
-typedef struct point{
+typedef struct point {
   float x;
   float y;
 } Point;
@@ -15,10 +15,9 @@ typedef struct point{
 void printPoint(Point point) {
   printf("(X,Y) = (%.1f, %.1f)\n", point.x, point.y);
 }
-
 // Function #2
 Point getPoint() {
-  float x, y; 
+  float x, y;
   puts("Enter Point's informnation: ");
   printf("X = ");
   scanf("%f", &x);
@@ -28,12 +27,9 @@ Point getPoint() {
   return point;
 }
 
-
-
 int main() {
   Point myPoint = getPoint();
   printPoint(myPoint);
-
 
   return 0;
 }
