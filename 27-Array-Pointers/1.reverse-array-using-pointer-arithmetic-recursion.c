@@ -28,16 +28,14 @@ void genericSwap(void *a, void *b, unsigned int size) {
 }
 
 void reverseStrRecursionUsingPointerArithmetic(char *currentElement,
-                                               int initialSize,
                                                int currentSize) {
-  if (currentSize < initialSize / 2)
+  if (currentSize < 2)
     return;
   genericSwap(currentElement, currentElement + currentSize - 1,
               sizeof(*currentElement));
   currentElement++;
   currentSize -= 2;
-  reverseStrRecursionUsingPointerArithmetic(currentElement, initialSize,
-                                            currentSize);
+  reverseStrRecursionUsingPointerArithmetic(currentElement, currentSize);
 }
 
 int main(void) {
@@ -49,8 +47,7 @@ int main(void) {
   puts("Before: ");
   printf("%s\n", charArr);
 
-  reverseStrRecursionUsingPointerArithmetic(charArr, strlen(charArr),
-                                            strlen(charArr));
+  reverseStrRecursionUsingPointerArithmetic(charArr, strlen(charArr));
 
   puts("After : ");
   printf("%s\n", charArr);
