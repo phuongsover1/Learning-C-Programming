@@ -37,7 +37,7 @@ int main(void) {
 int checkExchangingSignsInArray(int *arr, int size) {
   if (size == 1)
     return 1;
-  if (*arr > 0 && *(arr + 1) > 0 || *arr < 0 && *(arr + 1) < 0)
+  if (*arr * *(arr + 1) > 0)
     return 0;
   return checkExchangingSignsInArray(++arr, size - 1);
 }
