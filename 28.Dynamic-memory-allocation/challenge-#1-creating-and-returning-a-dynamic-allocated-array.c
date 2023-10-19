@@ -10,6 +10,7 @@ int main(void) {
   int *arr = createdArray(size);
   if (arr != NULL) {
     printArray(arr, size);
+    free(arr);
   } else {
     puts("Failed to allocate array\n");
   }
