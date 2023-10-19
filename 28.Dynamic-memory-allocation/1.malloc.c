@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(void) {
   double *bArr;
@@ -6,5 +7,10 @@ int main(void) {
   printf("Enter size: ");
   scanf("%d", &arraySize);
   bArr = (double *)malloc(sizeof(double) * arraySize);
+  if (bArr != NULL) {
+    puts("Allocation Succeded!");
+  }
+  else 
+    puts("Allocation failed");
   return 0;
 }
