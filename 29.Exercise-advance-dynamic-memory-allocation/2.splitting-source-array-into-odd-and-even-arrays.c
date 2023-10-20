@@ -34,9 +34,6 @@ void createOddAndEvenArraysFromSouce(int *sourceArr, unsigned int sourceSize,
 
   *oddArrSize = countOdd;
   *evenArrSize = countEven;
-  printf("lastIndexOdd: %d, lastIndexEven: %d\n", lastIndexOddArr,
-         lastIndexEvenArr);
-
   *oddArr = (int *)malloc(sizeof(int) * countOdd);
   *evenArr = (int *)malloc(sizeof(int) * countEven);
   if (*oddArr == NULL || *evenArr == NULL) {
