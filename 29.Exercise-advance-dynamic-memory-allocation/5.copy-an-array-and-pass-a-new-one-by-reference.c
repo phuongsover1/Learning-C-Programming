@@ -8,12 +8,13 @@
 // The new array (copied) should be passed by reference to the caller function.
 
 void printIntArray(int *arr, unsigned int size);
-int *createArray(unsigned int size);
-void initArray(int *arr, unsigned int size);
-void freeMemory(void **ptr);
+int *createArray(const unsigned int size);
+void initArray(int *const arr, const unsigned int size);
+void freeMemory(void **const ptr);
 
-void copyIntArray(int **desArr, int *desArrSize, int *sourceArr,
-                  int sourceArrSize, int numOfElements);
+void copyIntArray(int **const desArr, int *const desArrSize,
+                  int *const sourceArr, const int sourceArrSize,
+                  const int numOfElements);
 
 int main(void) {
   int sourceArrSize, desArrSize, numOfElementsToCopy;
@@ -60,11 +61,11 @@ void printIntArray(int *arr, unsigned int size) {
   }
   printf("\n");
 }
-int *createArray(unsigned int size) {
+int *createArray(const unsigned int size) {
   return (int *)malloc(sizeof(int) * size);
 }
 
-void initArray(int *arr, unsigned int size) {
+void initArray(int *const arr, const unsigned int size) {
   if (arr != NULL) {
     int i;
     for (i = 0; i < size; i++) {
@@ -73,13 +74,14 @@ void initArray(int *arr, unsigned int size) {
     }
   }
 }
-void freeMemory(void **ptr) {
+void freeMemory(void **const ptr) {
   free(*ptr);
   *ptr = NULL;
 }
 
-void copyIntArray(int **desArr, int *desArrSize, int *sourceArr,
-                  int sourceArrsize, int numOfElements) {
+void copyIntArray(int **const desArr, int *const desArrSize,
+                  int *const sourceArr, const int sourceArrsize,
+                  const int numOfElements) {
   if (sourceArr == NULL) {
     puts("Source Array is NULL");
     return;
@@ -98,6 +100,5 @@ void copyIntArray(int **desArr, int *desArrSize, int *sourceArr,
   }
   *desArrSize = numOfElements;
   *desArr = (int *)realloc(*desArr, sizeof(int) * *desArrSize);
-
   memcpy(*desArr, sourceArr, numOfElements * sizeof(int));
 }
