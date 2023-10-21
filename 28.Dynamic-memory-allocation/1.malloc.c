@@ -9,6 +9,7 @@ int main(void) {
   bArr = (double *)malloc(sizeof(double) * arraySize);
   if (bArr != NULL) {
     puts("Allocation Succeded!");
+    free(bArr);
   }
   else 
     puts("Allocation failed");

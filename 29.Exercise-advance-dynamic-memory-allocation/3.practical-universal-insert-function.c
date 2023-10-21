@@ -55,7 +55,7 @@ void *insertElementToArr(void *arr, unsigned int *size, void *newElement,
     puts("indexToInsert larger than actual size");
     return NULL;
   }
-  int oldSize = *size;
+  unsigned int oldSize = *size;
 
   // Increase the size
   *size = oldSize + 1;

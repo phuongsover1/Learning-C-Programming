@@ -1,18 +1,31 @@
 #include <stdio.h>
+#include <string.h>
 
 int main() {
-  // 12 - 3000, 8 - 5000,@# # V 
-  long change = 10000 - 468;
-  int numOf5000PaperMoney, numOf1000PaperMoney;
 
-  numOf5000PaperMoney = change / 5000;
-  change %= 5000;
+  char *mnthp[3] = {"January", "February", "March"};
 
-  numOf1000PaperMoney = change / 1000;
-  change %= 1000;
+  char **p1, **p2, **p3;
+  char *test;
+  test = mnthp[0];
 
-  printf("Number Of 5000 Paper Money = %d\n", numOf5000PaperMoney);
-  printf("Number Of 1000 Paper Money = %d\n", numOf1000PaperMoney);
-  printf("Number of 1 Coin = %d\n", change % 1);
+  p1 = &mnthp[0];
+  p2 = &mnthp[1];
+  p3 = &mnthp[2];
+
+  for (int i = 0; i < 3; i++) {
+    printf("Address of pointer which pointed to mnthp[%d] = %p\n", i,
+           &mnthp[i]);
+    printf("Address of value which was pointed by mnthp[%d] = %p\n", i,
+           mnthp[i]);
+  }
+
+  printf("p1 = %p\n", p1);
+  printf("p2 = %p\n", p2);
+  printf("p3 = %p\n", p3);
+
+  printf("*p1 = %p\n", *p1);
+  printf("*p2 = %p\n", *p2);
+  printf("*p3 = %p\n", *p3);
   return 0;
 }

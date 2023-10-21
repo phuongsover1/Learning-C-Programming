@@ -15,16 +15,16 @@ int main(void) {
   int newElement;
   unsigned int index;
 
-  printf_s("Enter the size of arr: ");
-  scanf_s("%d", &arrSize);
+  printf("Enter the size of arr: ");
+  scanf("%d", &arrSize);
   arr = createArray(arrSize);
   initArray(arr, arrSize);
   printIntArray(arr, arrSize);
 
-  printf_s("Enter value for new element: ");
-  scanf_s("%d", &newElement);
-  printf_s("Enter the index, in that you want to insert: ");
-  scanf_s("%d", &index);
+  printf("Enter value for new element: ");
+  scanf("%d", &newElement);
+  printf("Enter the index, in that you want to insert: ");
+  scanf("%d", &index);
 
   arr = insertElementToArray(arr, &arrSize, &newElement, sizeof(int), index);
 
@@ -35,7 +35,7 @@ int main(void) {
 
 void printIntArray(int *arr, unsigned int size) {
   while (size > 0) {
-    printf_s("%d ", *arr);
+    printf("%d ", *arr);
     arr++;
     size--;
   }
@@ -49,8 +49,8 @@ void initArray(int *arr, unsigned int size) {
   if (arr != NULL) {
     int i;
     for (i = 0; i < size; i++) {
-      printf_s("Enter value for arr[%d] = ", i);
-      scanf_s("%d", &arr[i]);
+      printf("Enter value for arr[%d] = ", i);
+      scanf("%d", &arr[i]);
     }
   }
 }
@@ -81,13 +81,11 @@ void *insertElementToArray(void *arr, unsigned int *size, void *newElement,
   // trí byte của element cuối cùng của mảng (dừng lại ở cuối oldSize) 2.vị trí
   // bắt đầu được copy mới là từ startByteLocationToInsertNewElement +
   // elementSize
-  memcpy_s(temp + (startByteLocationToInsertNewElement + elementSize),
-           totalShiftElements * elementSize,
-           temp + startByteLocationToInsertNewElement,
-           totalShiftElements * elementSize);
+  memcpy(temp + (startByteLocationToInsertNewElement + elementSize),
+         temp + startByteLocationToInsertNewElement,
+         totalShiftElements * elementSize);
 
   // insert new element to array
-  memcpy_s(temp + startByteLocationToInsertNewElement, elementSize, newElement,
-           elementSize);
+  memcpy(temp + startByteLocationToInsertNewElement, newElement, elementSize);
   return temp;
 }

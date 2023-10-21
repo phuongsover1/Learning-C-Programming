@@ -14,7 +14,7 @@
 double findArrayAverage(int *arr, int size);
 
 int main(void) {
-  
+
   int n;
   int arr[SIZE];
 
@@ -36,12 +36,13 @@ int main(void) {
 }
 
 double findArrayAverage(int *arr, int size) {
-  if (size == 1) 
+  if (size == 1)
     return (double)*arr;
   else if (size > 1) {
     int nextSizeToPassToNextRecursion = size - 1;
-    double lastSum = findArrayAverage(arr + 1, nextSizeToPassToNextRecursion) * nextSizeToPassToNextRecursion;
-    return  (lastSum + *arr) / size;
+    double lastSum = findArrayAverage(arr + 1, nextSizeToPassToNextRecursion) *
+                     nextSizeToPassToNextRecursion;
+    return (lastSum + *arr) / size;
   }
   return 0;
 }
