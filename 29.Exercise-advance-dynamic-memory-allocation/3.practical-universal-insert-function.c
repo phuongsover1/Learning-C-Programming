@@ -85,7 +85,6 @@ void *insertElementToArr(void *arr, unsigned int *size, void *newElement,
     unsigned int startByteLocationAtTheInsertedNewElement =
         indexToInsert * sizeOfNewElement;
 
-    printf("start byte: %d", startByteLocationAtTheInsertedNewElement);
     // điều kiện dừng là shift hết số phần tử = totalShiftElements
     // Note: *size = new size of the array
     int count;
