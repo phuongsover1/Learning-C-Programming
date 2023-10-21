@@ -96,9 +96,6 @@ void copyIntArray(int **desArr, int *desArrSize, int *sourceArr,
     puts("desArr is NULL");
     return;
   }
-  if (*desArr != NULL) {
-    freeMemory((void **)desArr);
-  }
   *desArrSize = numOfElements;
   *desArr = (int *)realloc(*desArr, sizeof(int) * *desArrSize);
 
