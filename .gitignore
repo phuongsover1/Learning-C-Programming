@@ -3,3 +3,4 @@
 test/bit-manipulation/out
 /**/out/**
 /**/output/**
+.vscode/**
