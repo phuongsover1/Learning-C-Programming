@@ -2,15 +2,17 @@
 #include <stdlib.h>
 
 void printIntArray(int *arr, unsigned int size);
+void printDoubleArray(double *arr, int size);
 void *insertElementToArr(void *arr, unsigned int *size, void *newElement,
                          unsigned int sizeOfNewElement,
                          unsigned int indexToInsert);
 
 int *createArray(unsigned int size);
+double *createDoubleArray(int size);
 void initArray(int *arr, unsigned int size);
 
 void freeMemory(void **ptr);
-
+void initDoubleArray(double *arr, int size);
 int main(void) {
   unsigned int arrSize;
   int *arr = NULL;
@@ -32,10 +34,35 @@ int main(void) {
   arr = (int *)insertElementToArr(arr, &arrSize, &newElement,
                                   sizeof(newElement), index);
 
-  puts("Before: ");
+  puts("After: ");
   printIntArray(arr, arrSize);
 
   freeMemory(&arr);
+
+  // TESTING DOUBLE  ARRAY
+  puts("DOUBLE ARRAY");
+  unsigned int arrDoubleSize;
+  double *doubleArr = NULL;
+  double newDoubleElement;
+
+  printf("Enter the size of double array: ");
+  scanf("%d", &arrDoubleSize);
+  doubleArr = createDoubleArray(arrDoubleSize);
+  initDoubleArray(doubleArr, arrDoubleSize);
+
+  puts("Before: ");
+  printDoubleArray(doubleArr, arrDoubleSize);
+
+  printf("Enter new double element: ");
+  scanf("%lf", &newDoubleElement);
+  printf("Enter the index, in that you want to insert: ");
+  scanf("%d", &index);
+  doubleArr = (double *)insertElementToArr(
+      doubleArr, &arrDoubleSize, &newDoubleElement, sizeof(double), index);
+  puts("After: ");
+  printDoubleArray(doubleArr, arrDoubleSize);
+
+  freeMemory((void **)&doubleArr);
   return 0;
 }
 
@@ -48,6 +75,14 @@ void printIntArray(int *arr, unsigned int size) {
   printf("\n");
 }
 
+void printDoubleArray(double *arr, int size) {
+  while (size > 0) {
+    printf("%lf ", *arr);
+    arr++;
+    size--;
+  }
+  printf("\n");
+}
 void *insertElementToArr(void *arr, unsigned int *size, void *newElement,
                          unsigned int sizeOfNewElement,
                          unsigned int indexToInsert) {
@@ -109,12 +144,26 @@ int *createArray(unsigned int size) {
   return (int *)malloc(sizeof(int) * size);
 }
 
+double *createDoubleArray(int size) {
+  return (double *)malloc(sizeof(double) * size);
+}
+
 void initArray(int *arr, unsigned int size) {
   if (arr != NULL) {
     int i;
     for (i = 0; i < size; i++) {
       printf("Enter value for arr[%d] = ", i);
       scanf("%d", &arr[i]);
+    }
+  }
+}
+
+void initDoubleArray(double *arr, int size) {
+  if (arr != NULL) {
+    int i;
+    for (i = 0; i < size; i++) {
+      printf("Enter value for arr[%d] = ", i);
+      scanf("%lf", &arr[i]);
     }
   }
 }
