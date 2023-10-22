@@ -24,6 +24,10 @@ int main(void) {
 
   trackedNumOfColumnsEachRow = (int *)calloc(numOfRows, sizeof(int));
   arr = (int **)createRowsOf2DArrays(numOfRows, sizeof(int *));
+  if (arr == NULL) {
+    freeArray(trackedNumOfColumnsEachRow);
+    exit(EXIT_FAILURE);
+  }
   initColumnsDynamicallyEachRow2DArray(arr, numOfRows,
                                        trackedNumOfColumnsEachRow);
   print2DIntArray(arr, numOfRows, trackedNumOfColumnsEachRow);
@@ -42,6 +46,14 @@ void initColumnsDynamicallyEachRow2DArray(
     scanf("%d", &numOfCols);
     trackedNumOfColumnsEachRow[i] = numOfCols;
     ptr[i] = (int *)calloc(numOfCols, sizeof(int));
+    if (ptr[i] == NULL) {
+      // FIXME: Free arr, free trackNumOfColumnsEachRow
+      printf("Error when calloc() columns for row %d in 2d array\n", i);
+      free2DArray((void **)ptr, i + 1);
+      freeArray((void *)trackedNumOfColumnsEachRow);
+      exit(EXIT_FAILURE);
+    }
+
     for (j = 0; j < numOfCols; j++) {
       printf("Enter value for arr[%d][%d] = ", i, j);
       scanf("%d", &ptr[i][j]);
